@@ -13,3 +13,5 @@ function mergeSort(arr) {
     }
     return [...merged,...head.slice(i),...tail.slice(j)]
   }
+
+  module.exports = mergeSort;
