@@ -22,11 +22,12 @@ describe('Sorting algorithms', ()=>{
             expect(algorithms[key]([])).toEqual([])
         })
         it(`Handles a previously sorted array with ${key}`, ()=>{
-            expect(algorithms[key]([1,2,3])).toEqual([1,2,3])
+            const sortedArray = Array.from({length: 5000}, (_,i) => i)
+            expect(algorithms[key](sortedArray)).toEqual([...sortedArray].sort((a,b)=>a-b))
         })
         it(`Sorts a random array with ${key}`,()=>{
-            const randomArray = Array.from({length: Math.floor(Math.random()*100)}, el=> Math.floor(Math.random()*100))
-            expect(algorithms[key](randomArray)).toEqual([...randomArray].sort((a,b)=>a-b))
+            const randomArray = Array.from({length: 5000}, () => Math.floor(Math.random()*5000))
+            expect(algorithms[key]([...randomArray])).toEqual([...randomArray].sort((a,b)=>a-b))
         })
     }
 })
