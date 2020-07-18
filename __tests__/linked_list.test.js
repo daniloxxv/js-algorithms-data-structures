@@ -46,13 +46,13 @@ describe('Singly linked list', () => {
     expect(linkedList.pop()).toBeUndefined();
     expect(linkedList.length).toEqual(0);
   });
-  it('Should remove the first element when pop is called', () => {
+  it('Should remove the first element when shift is called', () => {
     const linkedList = new LinkedList();
     linkedList.push('Some value').push('Some other value').push('The last value');
     linkedList.shift();
     expect(linkedList.head.val).toEqual('Some other value');
   });
-  it('Should return the first element value when pop is called', () => {
+  it('Should return the first element value when shift is called', () => {
     const linkedList = new LinkedList();
     linkedList.push('Some value').push('Some other value').push('The last value');
     expect(linkedList.shift()).toEqual('Some value');
@@ -138,5 +138,35 @@ describe('Singly linked list', () => {
     const failure = linkedList.insert(10, 'New value');
     expect(success).toEqual(true);
     expect(failure).toEqual(false);
+  });
+  it('Should remove a value at a given index', () => {
+    const linkedList = new LinkedList();
+    linkedList.unshift('Third value').unshift('Second value').unshift('First value');
+    const removed = linkedList.remove(1);
+    const newNodeAtIndex = linkedList.get(1);
+    expect(newNodeAtIndex.val).toBe('Third value');
+    expect(newNodeAtIndex.next).toBeNull();
+    expect(linkedList.length).toEqual(2);
+    expect(removed.val).toEqual('Second value');
+  });
+  it('Should behave like pop when remove is called with an index of linkedList.length', () => {
+    const linkedList = new LinkedList();
+    linkedList.push('Some value').push('Some other value which will be removed').remove(linkedList.length);
+    expect(linkedList.tail.val).toEqual('Some value');
+    expect(linkedList.length).toEqual(1);
+  });
+  it('Should behave like shift when remove is called with an index of 0', () => {
+    const linkedList = new LinkedList();
+    linkedList.push('Some value').push('Some other value').push('The last value');
+    linkedList.remove(0);
+    expect(linkedList.head.val).toEqual('Some other value');
+  });
+  it('Should return the removed node when the operation is successful and undefined otherwise', () => {
+    const linkedList = new LinkedList();
+    linkedList.push('Some value').push('Some other value').push('The last value');
+    const node1 = linkedList.get(1);
+    const removed = linkedList.remove(1);
+    expect(node1).toBe(removed);
+    expect(linkedList.remove(10)).toBeUndefined();
   });
 });

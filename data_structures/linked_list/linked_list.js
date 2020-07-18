@@ -89,6 +89,17 @@ class LinkedList {
     }
     return true;
   }
+
+  remove(index) {
+    if (index < 0 || index > this.length) return undefined;
+    if (index === 0) return this.shift();
+    if (index === this.length) return this.pop();
+    const previousNode = this.get(index - 1);
+    const removed = previousNode.next;
+    previousNode.next = removed.next;
+    this.length -= 1;
+    return removed;
+  }
 }
 
 module.exports = LinkedList;
