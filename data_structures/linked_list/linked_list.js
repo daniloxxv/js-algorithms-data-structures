@@ -100,6 +100,32 @@ class LinkedList {
     this.length -= 1;
     return removed;
   }
+
+  reverse() {
+    let currentNode = this.head;
+    let nextNode = currentNode.next;
+    while (nextNode) {
+      const temp = currentNode;
+      currentNode = nextNode;
+      nextNode = nextNode.next;
+      currentNode.next = temp;
+    }
+    const temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+    this.tail.next = null;
+  }
+
+  toString() {
+    let currentNode = this.head;
+    let res = '';
+    while (currentNode.next) {
+      res += `${currentNode.val} -> `;
+      currentNode = currentNode.next;
+    }
+    res += currentNode.val;
+    return res;
+  }
 }
 
 module.exports = LinkedList;
