@@ -28,25 +28,17 @@ function getMaxDigitCount(arr){
  * @param {Array} arr An array of integers
  * @param {Number} digit The digit current being sorted (counting from the right, starting with zero)
  */
-function radixSort(arr, digit=0){
+function radixSort(arr){
     const maxDigitCount = getMaxDigitCount(arr);
-    const buckets = [
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-        [],
-    ];
-    for (const number of arr){
-        const digitValue = getDigit(number,digit);
-        buckets[digitValue].push(number)
+    for (let digit = 0; digit < maxDigitCount; digit++){
+        const buckets = Array.from({length: 10}, ()=>[])
+        for (const number of arr){
+            const digitValue = getDigit(number, digit);
+            buckets[digitValue].push(number)
+        }
+        arr = [].concat(...buckets);
     }
-    return digit === maxDigitCount ? arr : radixSort(buckets.reduce((a,b)=>[...a, ...b],[]), digit + 1)
+    return arr;
 }
 
 module.exports = radixSort;
