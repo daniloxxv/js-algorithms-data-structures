@@ -1,10 +1,10 @@
 const expect = require('expect');
-const bubbleSort = require('../sorting-algorithms/bubble_sort');
-const mergeSort = require('../sorting-algorithms/merge_sort');
-const selectionSort = require('../sorting-algorithms/selection_sort');
-const insertionSort = require('../sorting-algorithms/insertion-sort');
-const quickSort = require('../sorting-algorithms/quick_sort');
-const radixSort = require('../sorting-algorithms/radix_sort');
+const bubbleSort = require('../sorting_algorithms/bubble_sort');
+const mergeSort = require('../sorting_algorithms/merge_sort');
+const selectionSort = require('../sorting_algorithms/selection_sort');
+const insertionSort = require('../sorting_algorithms/insertion-sort');
+const quickSort = require('../sorting_algorithms/quick_sort');
+const radixSort = require('../sorting_algorithms/radix_sort');
 
 describe('Sorting algorithms', () => {
   const algorithms = {
