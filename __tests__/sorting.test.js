@@ -3,13 +3,15 @@ const bubbleSort = require('../sorting-algorithms/bubble_sort')
 const mergeSort = require('../sorting-algorithms/merge_sort')
 const selectionSort = require('../sorting-algorithms/selection_sort')
 const quickSort = require('../sorting-algorithms/quick_sort')
+const radixSort = require('../sorting-algorithms/radix_sort')
 
 describe('Sorting algorithms', ()=>{
     const algorithms = {
         bubbleSort,
         mergeSort,
         selectionSort, 
-        quickSort
+        quickSort,
+        radixSort
     }
 
     for (const key in algorithms){
