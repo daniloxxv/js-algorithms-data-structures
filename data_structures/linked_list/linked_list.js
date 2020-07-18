@@ -59,6 +59,35 @@ class LinkedList {
     this.length += 1;
     return this;
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+    let currentNode = this.head;
+    for (let i = 0; i < index; i += 1) {
+      currentNode = currentNode.next;
+    }
+    return currentNode;
+  }
+
+  set(index, val) {
+    const nodeToUpdate = this.get(index);
+    if (!nodeToUpdate) return false;
+    nodeToUpdate.val = val;
+    return true;
+  }
+
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+    if (index === 0) this.unshift(val);
+    else if (index === this.length) this.push(val);
+    else {
+      const previousNode = this.get(index - 1);
+      const nextNode = previousNode.next;
+      previousNode.next = new Node(val);
+      previousNode.next.next = nextNode;
+    }
+    return true;
+  }
 }
 
 module.exports = LinkedList;
