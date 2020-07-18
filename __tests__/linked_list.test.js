@@ -188,9 +188,22 @@ describe('Singly linked list', () => {
     expect(linkedList.remove(10)).toBeUndefined();
   });
   it('Should reverse a linked list in place', () => {
-    const randomArray = Array.from({ length: 1000 }, () => Math.floor(Math.random() * 1000));
+    const randomArray = Array.from({ length: Math.floor(Math.random() * 1000) },
+      () => Math.floor(Math.random() * 1000));
     const linkedList = generateListFromArray(randomArray);
     const listToCompare = generateListFromArray(randomArray.reverse());
+    linkedList.reverse();
+    expect(compareLists(linkedList, listToCompare)).toBeTruthy();
+  });
+  it('Should handle reversing a single-element list', () => {
+    const linkedList = generateListFromArray([1]);
+    const listToCompare = generateListFromArray([1]);
+    linkedList.reverse();
+    expect(compareLists(linkedList, listToCompare)).toBeTruthy();
+  });
+  it('Should handle reversing an empty list', () => {
+    const linkedList = generateListFromArray([1]);
+    const listToCompare = generateListFromArray([1]);
     linkedList.reverse();
     expect(compareLists(linkedList, listToCompare)).toBeTruthy();
   });
