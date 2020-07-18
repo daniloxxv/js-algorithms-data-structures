@@ -111,6 +111,7 @@ describe('Singly linked list', () => {
     expect(linkedList.get(0).next).toBe(insertedNode);
     expect(insertedNode.val).toEqual('Second value');
     expect(insertedNode.next.val).toEqual('Third value');
+    expect(linkedList.length).toEqual(4);
   });
   it('Should behave like push when insert is called with an index of linkedList.length', () => {
     const linkedList = new LinkedList();

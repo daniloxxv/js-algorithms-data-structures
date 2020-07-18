@@ -85,6 +85,7 @@ class LinkedList {
       const nextNode = previousNode.next;
       previousNode.next = new Node(val);
       previousNode.next.next = nextNode;
+      this.length += 1;
     }
     return true;
   }
