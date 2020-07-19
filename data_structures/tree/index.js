@@ -12,7 +12,7 @@ class Tree {
       return this;
     }
     let currentNode = this.root;
-    while (currentNode) {
+    for (;;) {
       if (val < currentNode.val) {
         if (!currentNode.left) {
           currentNode.left = node;
@@ -25,7 +25,7 @@ class Tree {
           break;
         }
         currentNode = currentNode.right;
-      }
+      } else break;
     }
     return this;
   }
