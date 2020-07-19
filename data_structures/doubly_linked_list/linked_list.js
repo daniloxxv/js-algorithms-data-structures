@@ -82,8 +82,9 @@ class LinkedList {
   }
 
   set(index, val) {
-    if (index < 0 || index >= this.length) return false;
-    this.get(index).val = val;
+    const nodeToUpdate = this.get(index);
+    if (nodeToUpdate === null) return false;
+    nodeToUpdate.val = val;
     return true;
   }
 }
