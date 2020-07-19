@@ -71,4 +71,29 @@ describe('Tree', () => {
       .insert(11);
     expect(tree.breadthFirstSearch()).toEqual([5, 3, 8, 1, 6, 10, 2, 11]);
   });
+  it('Should traverse nodes in the right order for pre-order Depth-First Search', () => {
+    const tree = new Tree();
+    tree.insert(5).insert(3).insert(1).insert(2)
+      .insert(8)
+      .insert(6)
+      .insert(6)
+      .insert(7)
+      .insert(10)
+      .insert(11);
+    expect(tree.depthFirstSearch()).toEqual([5, 3, 1, 2, 8, 6, 7, 10, 11]);
+  });
+  it('Should traverse nodes in the right order for post-order Depth-First Search', () => {
+    const tree = new Tree();
+    tree.insert(10).insert(6).insert(15).insert(3)
+      .insert(8)
+      .insert(20);
+    expect(tree.depthFirstSearchPostOrder()).toEqual([3, 8, 6, 20, 15, 10]);
+  });
+  it('Should traverse nodes in the right order for in-order Depth-First Search', () => {
+    const tree = new Tree();
+    tree.insert(10).insert(6).insert(15).insert(3)
+      .insert(8)
+      .insert(20);
+    expect(tree.depthFirstSearchInOrder()).toEqual([3, 6, 8, 10, 15, 20]);
+  });
 });

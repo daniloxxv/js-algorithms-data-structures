@@ -34,11 +34,9 @@ class Tree {
   find(val) {
     let currentNode = this.root;
     while (currentNode) {
-      if (val < currentNode.val) {
-        currentNode = currentNode.left;
-      } else if (val > currentNode.val) {
-        currentNode = currentNode.right;
-      } else return currentNode;
+      if (val < currentNode.val) currentNode = currentNode.left;
+      else if (val > currentNode.val) currentNode = currentNode.right;
+      else return currentNode;
     }
     return undefined;
   }
@@ -50,14 +48,46 @@ class Tree {
     queue.enqueue(current);
     while (queue.size) {
       current = queue.dequeue();
-      if (current.left) {
-        queue.enqueue(current.left);
-      }
-      if (current.right) {
-        queue.enqueue(current.right);
-      }
+      if (current.left) queue.enqueue(current.left);
+      if (current.right) queue.enqueue(current.right);
       visited.push(current.val);
     }
+    return visited;
+  }
+
+  depthFirstSearch() {
+    const visited = [];
+    function visit(node) {
+      if (!node) return;
+      visited.push(node.val);
+      visit(node.left);
+      visit(node.right);
+    }
+    visit(this.root);
+    return visited;
+  }
+
+  depthFirstSearchPostOrder() {
+    const visited = [];
+    function visit(node) {
+      if (!node) return;
+      visit(node.left);
+      visit(node.right);
+      visited.push(node.val);
+    }
+    visit(this.root);
+    return visited;
+  }
+
+  depthFirstSearchInOrder() {
+    const visited = [];
+    function visit(node) {
+      if (!node) return;
+      visit(node.left);
+      visited.push(node.val);
+      visit(node.right);
+    }
+    visit(this.root);
     return visited;
   }
 }
