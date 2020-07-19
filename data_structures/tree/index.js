@@ -29,6 +29,24 @@ class Tree {
     }
     return this;
   }
+
+  find(val) {
+    let currentNode = this.root;
+    while (currentNode) {
+      if (val < currentNode.val) {
+        if (!currentNode.left) {
+          return false;
+        }
+        currentNode = currentNode.left;
+      } else if (val > currentNode.val) {
+        if (!currentNode.right) {
+          return false;
+        }
+        currentNode = currentNode.right;
+      } else return true;
+    }
+    return false;
+  }
 }
 
 module.exports = Tree;
