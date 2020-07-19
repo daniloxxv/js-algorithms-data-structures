@@ -1,5 +1,5 @@
 const expect = require('expect');
-const LinkedList = require('../data_structures/linked_list/linked_list');
+const LinkedList = require('../data_structures/linked_list');
 const compareLists = require('./helpers/compareLists');
 const generateLinkedListFromArray = require('./helpers/generateLinkedListFromArray');
 
