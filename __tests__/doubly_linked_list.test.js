@@ -1,5 +1,7 @@
 const expect = require('expect');
 const LinkedList = require('../data_structures/doubly_linked_list/linked_list');
+const generateLinkedListFromArray = require('./helpers/generateLinkedListFromArray');
+const compareLists = require('./helpers/compareLists');
 
 describe('Doubly linked list', () => {
   it('Should create an empty linked list', () => {
@@ -183,5 +185,37 @@ describe('Doubly linked list', () => {
     const removed = linkedList.remove(1);
     expect(node1).toBe(removed);
     expect(linkedList.remove(10)).toBeUndefined();
+  });
+  it('Should reverse a linked list in place', () => {
+    const randomArray = Array.from({ length: Math.floor(Math.random() * 1000) },
+      () => Math.floor(Math.random() * 1000));
+    const linkedList = generateLinkedListFromArray(randomArray, LinkedList);
+    const listToCompare = generateLinkedListFromArray(randomArray.reverse(), LinkedList);
+    linkedList.reverse();
+    expect(compareLists(linkedList, listToCompare)).toBeTruthy();
+  });
+  it('Should restore the original list if reverse is called twice', () => {
+    const randomArray = Array.from({ length: Math.floor(Math.random() * 1000) },
+      () => Math.floor(Math.random() * 1000));
+    const linkedList = generateLinkedListFromArray(randomArray, LinkedList);
+    const listToCompare = generateLinkedListFromArray(randomArray, LinkedList);
+    linkedList.reverse().reverse();
+    expect(compareLists(linkedList, listToCompare)).toBeTruthy();
+  });
+  it('Should handle reversing a single-element list', () => {
+    const linkedList = generateLinkedListFromArray([1], LinkedList);
+    const listToCompare = generateLinkedListFromArray([1], LinkedList);
+    linkedList.reverse();
+    expect(compareLists(linkedList, listToCompare)).toBeTruthy();
+  });
+  it('Should handle reversing an empty list', () => {
+    const linkedList = generateLinkedListFromArray([1], LinkedList);
+    const listToCompare = generateLinkedListFromArray([1], LinkedList);
+    linkedList.reverse();
+    expect(compareLists(linkedList, listToCompare)).toBeTruthy();
+  });
+  it('Should generate a string representation of the linked list', () => {
+    const linkedList = generateLinkedListFromArray([1, 2, 3, 4, 5], LinkedList);
+    expect(linkedList.toString()).toEqual([1, 2, 3, 4, 5].join(' -> '));
   });
 });

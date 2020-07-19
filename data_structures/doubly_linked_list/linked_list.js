@@ -111,7 +111,6 @@ class LinkedList {
 
   remove(index) {
     if (index === 0) return this.shift();
-
     if (index === this.length) return this.pop();
     const nodeToRemove = this.get(index);
     if (nodeToRemove === null) return undefined;
@@ -122,6 +121,30 @@ class LinkedList {
     nodeToRemove.next = null;
     this.length -= 1;
     return nodeToRemove;
+  }
+
+  reverse() {
+    let currentNode = this.head;
+    this.head = this.tail;
+    this.tail = currentNode;
+    for (let i = 0; i < this.length; i += 1) {
+      const temp = currentNode.prev;
+      currentNode.prev = currentNode.next;
+      currentNode.next = temp;
+      currentNode = currentNode.prev;
+    }
+    return this;
+  }
+
+  toString() {
+    let currentNode = this.head;
+    let res = '';
+    while (currentNode.next) {
+      res += `${currentNode.val} -> `;
+      currentNode = currentNode.next;
+    }
+    res += currentNode.val;
+    return res;
   }
 }
 
