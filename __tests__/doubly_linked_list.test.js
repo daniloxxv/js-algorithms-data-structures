@@ -104,4 +104,18 @@ describe('Doubly linked list', () => {
     expect(linkedList.get(3)).toBeNull();
     expect(linkedList.get(-1)).toBeNull();
   });
+  it('Should set a value at a given index', () => {
+    const linkedList = new LinkedList();
+    linkedList.unshift('Third value').unshift('Second value').unshift('First value');
+    linkedList.set(1, 'New value');
+    expect(linkedList.get(1).val).toEqual('New value');
+  });
+  it('Should return true when set is successful and false otherwise', () => {
+    const linkedList = new LinkedList();
+    linkedList.unshift('Third value').unshift('Second value').unshift('First value');
+    const success = linkedList.set(1, 'New value');
+    const failure = linkedList.set(10, 'New value');
+    expect(success).toEqual(true);
+    expect(failure).toEqual(false);
+  });
 });
