@@ -12,7 +12,7 @@ class Tree {
       return this;
     }
     let currentNode = this.root;
-    for (;;) {
+    while (currentNode) {
       if (val < currentNode.val) {
         if (!currentNode.left) {
           currentNode.left = node;
@@ -34,18 +34,12 @@ class Tree {
     let currentNode = this.root;
     while (currentNode) {
       if (val < currentNode.val) {
-        if (!currentNode.left) {
-          return false;
-        }
         currentNode = currentNode.left;
       } else if (val > currentNode.val) {
-        if (!currentNode.right) {
-          return false;
-        }
         currentNode = currentNode.right;
-      } else return true;
+      } else return currentNode;
     }
-    return false;
+    return undefined;
   }
 }
 
