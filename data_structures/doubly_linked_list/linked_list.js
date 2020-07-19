@@ -30,6 +30,7 @@ class LinkedList {
     } else {
       this.tail = this.tail.prev;
       this.tail.next = null;
+      removedNode.prev = null;
     }
     this.length -= 1;
     return removedNode.val;
