@@ -49,4 +49,27 @@ describe('Doubly linked list', () => {
     expect(linkedList.pop()).toBeUndefined();
     expect(linkedList.length).toEqual(0);
   });
+  it('Should remove the first element when shift is called', () => {
+    const linkedList = new LinkedList();
+    linkedList.push('Some value').push('Some other value').push('The last value');
+    linkedList.shift();
+    expect(linkedList.head.val).toEqual('Some other value');
+  });
+  it('Should return the first element value when shift is called', () => {
+    const linkedList = new LinkedList();
+    linkedList.push('Some value').push('Some other value').push('The last value');
+    expect(linkedList.shift()).toEqual('Some value');
+  });
+  it('Should empty the list if it has just one element', () => {
+    const linkedList = new LinkedList();
+    linkedList.push('something').shift();
+    expect(linkedList.length).toEqual(0);
+    expect(linkedList.head).toBeNull();
+    expect(linkedList.tail).toBeNull();
+  });
+  it('Should return undefined if shift is called on an empty list', () => {
+    const linkedList = new LinkedList();
+    expect(linkedList.shift()).toBeUndefined();
+    expect(linkedList.length).toEqual(0);
+  });
 });

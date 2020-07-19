@@ -35,6 +35,21 @@ class LinkedList {
     this.length -= 1;
     return removedNode.val;
   }
+
+  shift() {
+    if (!this.head) return undefined;
+    const removedNode = this.head;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = this.head.next;
+      this.head.prev = null;
+      removedNode.next = null;
+    }
+    this.length -= 1;
+    return removedNode.val;
+  }
 }
 
 module.exports = LinkedList;
