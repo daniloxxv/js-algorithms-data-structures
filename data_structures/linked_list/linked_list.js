@@ -103,17 +103,17 @@ class LinkedList {
 
   reverse() {
     let currentNode = this.head;
+    let previousNode = null;
     let nextNode = currentNode.next;
-    while (nextNode) {
-      const temp = currentNode;
-      currentNode = nextNode;
-      nextNode = nextNode.next;
-      currentNode.next = temp;
-    }
-    const temp = this.head;
     this.head = this.tail;
-    this.tail = temp;
-    this.tail.next = null;
+    this.tail = currentNode;
+    while (currentNode) {
+      nextNode = currentNode.next;
+      currentNode.next = previousNode;
+      previousNode = currentNode;
+      currentNode = nextNode;
+    }
+    return this;
   }
 
   toString() {
