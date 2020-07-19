@@ -50,6 +50,20 @@ class LinkedList {
     this.length -= 1;
     return removedNode.val;
   }
+
+  unshift(val) {
+    const node = new Node(val);
+    if (!this.head) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      node.next = this.head;
+      this.head.prev = node;
+      this.head = node;
+    }
+    this.length += 1;
+    return this;
+  }
 }
 
 module.exports = LinkedList;

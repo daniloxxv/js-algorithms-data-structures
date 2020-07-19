@@ -72,4 +72,20 @@ describe('Doubly linked list', () => {
     expect(linkedList.shift()).toBeUndefined();
     expect(linkedList.length).toEqual(0);
   });
+  it('Should unshift a value to an empty list', () => {
+    const linkedList = new LinkedList();
+    linkedList.unshift('Some value');
+    expect(linkedList.length).toEqual(1);
+    expect(linkedList.head.val).toEqual('Some value');
+    expect(linkedList.tail.val).toEqual('Some value');
+    expect(linkedList.tail.next).toEqual(null);
+  });
+  it('Should unshift multiple values to a list', () => {
+    const linkedList = new LinkedList();
+    linkedList.unshift('Second value').unshift('First value');
+    expect(linkedList.length).toEqual(2);
+    expect(linkedList.head.val).toEqual('First value');
+    expect(linkedList.tail.val).toEqual('Second value');
+    expect(linkedList.head.next.val).toEqual('Second value');
+  });
 });
