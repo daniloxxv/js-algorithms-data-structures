@@ -62,4 +62,13 @@ describe('Tree', () => {
     const tree = new Tree();
     expect(tree.find(4)).toEqual(undefined);
   });
+  it('Should traverse nodes in the right order for Breadth-First Search', () => {
+    const tree = new Tree();
+    tree.insert(5).insert(3).insert(1).insert(2)
+      .insert(8)
+      .insert(6)
+      .insert(10)
+      .insert(11);
+    expect(tree.breadthFirstSearch()).toEqual([5, 3, 8, 1, 6, 10, 2, 11]);
+  });
 });

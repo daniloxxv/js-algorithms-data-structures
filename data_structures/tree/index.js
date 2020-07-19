@@ -1,4 +1,5 @@
 const Node = require('./node');
+const Queue = require('../queue');
 
 class Tree {
   constructor() {
@@ -40,6 +41,24 @@ class Tree {
       } else return currentNode;
     }
     return undefined;
+  }
+
+  breadthFirstSearch() {
+    const queue = new Queue();
+    const visited = [];
+    let current = this.root;
+    queue.enqueue(current);
+    while (queue.size) {
+      current = queue.dequeue();
+      if (current.left) {
+        queue.enqueue(current.left);
+      }
+      if (current.right) {
+        queue.enqueue(current.right);
+      }
+      visited.push(current.val);
+    }
+    return visited;
   }
 }
 
