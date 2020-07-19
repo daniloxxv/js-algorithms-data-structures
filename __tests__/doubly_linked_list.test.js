@@ -88,4 +88,20 @@ describe('Doubly linked list', () => {
     expect(linkedList.tail.val).toEqual('Second value');
     expect(linkedList.head.next.val).toEqual('Second value');
   });
+  it('Should get a value by index (high index)', () => {
+    const linkedList = new LinkedList();
+    linkedList.unshift('Fourth value').unshift('Third value').unshift('Second value').unshift('First value');
+    expect(linkedList.get(1).val).toEqual('Second value');
+  });
+  it('Should get a value by index (low index)', () => {
+    const linkedList = new LinkedList();
+    linkedList.unshift('Fourth value').unshift('Third value').unshift('Second value').unshift('First value');
+    expect(linkedList.get(2).val).toEqual('Third value');
+  });
+  it('Should return null when performing get with an invalid index', () => {
+    const linkedList = new LinkedList();
+    linkedList.unshift('Third value').unshift('Second value').unshift('First value');
+    expect(linkedList.get(3)).toBeNull();
+    expect(linkedList.get(-1)).toBeNull();
+  });
 });
