@@ -6,6 +6,11 @@ class Tree {
     this.root = null;
   }
 
+  /**
+   * Inserts a value into the tree (following BST rules)
+   * @param {any} val The value to insert
+   * @returns The tree
+   */
   insert(val) {
     const node = new Node(val);
     if (!this.root) {
@@ -31,6 +36,11 @@ class Tree {
     return this;
   }
 
+  /**
+   * Finds a value in a tree
+   * @param {any} val
+   * @returns {Node} The node containing the value, if it exists in the tree; undefined otherwise
+   */
   find(val) {
     let currentNode = this.root;
     while (currentNode) {
@@ -41,6 +51,10 @@ class Tree {
     return undefined;
   }
 
+  /**
+   * Traverses the tree using breadth-first search
+   * @returns {Array} An array of node values in the order in which they were visited
+   */
   breadthFirstSearch() {
     const queue = new Queue();
     const visited = [];
@@ -55,6 +69,10 @@ class Tree {
     return visited;
   }
 
+  /**
+   * Traverses the tree using pre-order DFS
+   * @returns {Array} An array of node values in the order in which they were visited
+   */
   depthFirstSearch() {
     const visited = [];
     function visit(node) {
@@ -67,6 +85,10 @@ class Tree {
     return visited;
   }
 
+  /**
+   * Traverses the tree using post-order DFS
+   * @returns {Array} An array of node values in the order in which they were visited
+   */
   depthFirstSearchPostOrder() {
     const visited = [];
     function visit(node) {
@@ -79,6 +101,10 @@ class Tree {
     return visited;
   }
 
+  /**
+   * Traverses the tree using in-order DFS
+   * @returns {Array} An array of node values in the order in which they were visited
+   */
   depthFirstSearchInOrder() {
     const visited = [];
     function visit(node) {

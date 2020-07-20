@@ -31,11 +31,15 @@ function getMaxDigitCount(arr) {
 function radixSort(arr) {
   const maxDigitCount = getMaxDigitCount(arr);
   for (let digit = 0; digit < maxDigitCount; digit += 1) {
+    // Create ten buckets, one for each digit from 0 to 9
     const buckets = Array.from({ length: 10 }, () => []);
+
+    // Place each element in the corresponding budget according to the digit being measured
     arr.forEach((number) => {
       const digitValue = getDigit(number, digit);
       buckets[digitValue].push(number);
     });
+    // Merging all buckets into an array
     arr = [].concat(...buckets);
   }
   return arr;

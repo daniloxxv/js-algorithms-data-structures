@@ -29,7 +29,7 @@ function quickSort(arr, start = 0, end = arr.length) {
     }
     // Last swap to ensure all elements smaller than the pivot end up on the left side
     swap(arr, start, pivotIndex);
-    // Recursively calling quicksort on both sides
+    // Recursively call quicksort on both sides
     quickSort(arr, start, pivotIndex);
     quickSort(arr, pivotIndex + 1, end);
   }

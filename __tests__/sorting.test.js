@@ -2,7 +2,7 @@ const expect = require('expect');
 const bubbleSort = require('../sorting_algorithms/bubble_sort');
 const mergeSort = require('../sorting_algorithms/merge_sort');
 const selectionSort = require('../sorting_algorithms/selection_sort');
-const insertionSort = require('../sorting_algorithms/insertion-sort');
+const insertionSort = require('../sorting_algorithms/insertion_sort');
 const quickSort = require('../sorting_algorithms/quick_sort');
 const radixSort = require('../sorting_algorithms/radix_sort');
 
