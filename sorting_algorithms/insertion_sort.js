@@ -10,7 +10,7 @@ function insertionSort(arr) {
   for (let i = 0, end = 1; end < arr.length; end += 1, i = end - 1) {
     const valueToSort = arr[end];
     while (i >= 0 && arr[i] > valueToSort) {
-      // Swapping the unsorted element with the previous one until it finds a smaller value
+      // Replacing the unsorted element with the previous one until it finds a smaller value
       arr[i + 1] = arr[i];
       i -= 1;
     }

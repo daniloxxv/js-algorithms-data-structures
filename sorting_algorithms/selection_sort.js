@@ -1,3 +1,5 @@
+const swap = require('../helpers/swap');
+
 /**
  * Sorts an array in place with selection sort
  * @param {Array} arr The array to sort
@@ -12,9 +14,7 @@ function selectionSort(arr) {
       if (arr[j] < arr[lowestElementIndex]) lowestElementIndex = j;
     }
     // Swaps the lowest element with the first unsorted element
-    const temp = arr[lowestElementIndex];
-    arr[lowestElementIndex] = arr[i];
-    arr[i] = temp;
+    swap(arr, lowestElementIndex, i);
   }
   return arr;
 }

@@ -1,3 +1,5 @@
+const swap = require('../helpers/swap');
+
 /**
  * Sorts an array in place with bubble sort
  * @param {Array} arr An array
@@ -21,9 +23,7 @@ function bubbleSort(arr) {
       }
     }
     // Swapping the element with the highest value with the last element in the array
-    const temp = arr[end];
-    arr[end] = highestValue;
-    arr[highestNumberIndex] = temp;
+    swap(arr, end, highestNumberIndex);
   }
   return arr;
 }
