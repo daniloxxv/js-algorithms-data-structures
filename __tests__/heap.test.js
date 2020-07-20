@@ -24,4 +24,11 @@ describe('Heap', () => {
     expect(maxElement).toEqual(41);
     expect(heap.values).toEqual([39, 27, 33, 18, 12]);
   });
+  it('Performs remove correctly for a heap with a single value', () => {
+    const heap = new Heap();
+    heap.insert(41);
+    const maxElement = heap.extractMax();
+    expect(maxElement).toEqual(41);
+    expect(heap.values).toEqual([]);
+  });
 });
