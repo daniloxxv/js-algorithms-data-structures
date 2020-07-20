@@ -7,6 +7,11 @@ class Stack {
     this.size = 0;
   }
 
+  /**
+   * Adds a value to the top of the stack
+   * @param {any} val The value to add
+   * @returns {Number} The size of the stack
+   */
   push(val) {
     this.size += 1;
     const node = new Node(val);
@@ -20,6 +25,10 @@ class Stack {
     return this.size;
   }
 
+  /**
+   * Removes an element from the top of the stack
+   * @returns {any} The removed element (or undefined if the stack is empty)
+   */
   pop() {
     if (!this.size) return undefined;
     this.size -= 1;

@@ -7,6 +7,11 @@ class LinkedList {
     this.length = 0;
   }
 
+  /**
+   * Adds a value to the end of the linked list
+   * @param {any} val The value to add
+   * @returns {LinkedList} The linked list
+   */
   push(val) {
     const node = new Node(val);
     if (!this.head) {
@@ -21,6 +26,10 @@ class LinkedList {
     return this;
   }
 
+  /**
+   * Removes an element from the end of the linked list
+   * @returns {any} The removed element (or undefined if the list is empty)
+   */
   pop() {
     if (!this.head) return undefined;
     const removedNode = this.tail;
@@ -36,6 +45,10 @@ class LinkedList {
     return removedNode.val;
   }
 
+  /**
+   * Removes an element from the beginning of the linked list
+   * @returns {any} The removed element (or undefined if the list is empty)
+   */
   shift() {
     if (!this.head) return undefined;
     const removedNode = this.head;
@@ -51,6 +64,11 @@ class LinkedList {
     return removedNode.val;
   }
 
+  /**
+   * Adds a value to the beginning of the linked list
+   * @param {any} val The value to add
+   * @returns {LinkedList} The linked list
+   */
   unshift(val) {
     const node = new Node(val);
     if (!this.head) {
@@ -65,6 +83,11 @@ class LinkedList {
     return this;
   }
 
+  /**
+   * Retrieves the node at a given index
+   * @param {Number} index The index
+   * @returns {Node|null} The node at the given index, or null if the index is invalid
+   */
   get(index) {
     if (index < 0 || index >= this.length) return null;
     if (index < this.length / 2) {
@@ -81,6 +104,12 @@ class LinkedList {
     return currentNode;
   }
 
+  /**
+   * Updates the value of a node at a given index
+   * @param {Number} index The index of the node to update
+   * @param {any} val The new value
+   * @returns {Boolean} true if the operation is successful, false if the index was invalid
+   */
   set(index, val) {
     const nodeToUpdate = this.get(index);
     if (nodeToUpdate === null) return false;
@@ -88,6 +117,12 @@ class LinkedList {
     return true;
   }
 
+  /**
+   * Adds a value to the list at a given index
+   * @param {Number} index The index in which to insert the node
+   * @param {any} val The new value
+   * @returns {Boolean} true if the operation is successful, false if the index was invalid
+   */
   insert(index, val) {
     if (index === 0) {
       this.unshift(val);
@@ -109,6 +144,11 @@ class LinkedList {
     return true;
   }
 
+  /**
+   * Removes an element from the list at a given index
+   * @param {Number} index The index
+   * @returns {Node|undefined} The removed node (or undefined if the index is invalid)
+   */
   remove(index) {
     if (index === 0) return this.shift();
     if (index === this.length) return this.pop();
@@ -123,6 +163,10 @@ class LinkedList {
     return nodeToRemove;
   }
 
+  /**
+   * Reverses the linked list in place
+   * @returns {LinkedList} The reversed linked list
+   */
   reverse() {
     let currentNode = this.head;
     this.head = this.tail;
@@ -136,6 +180,10 @@ class LinkedList {
     return this;
   }
 
+  /**
+   * Creates a string representation of the linked list
+   * @returns {String} A string containing all the list's values connected by an arrow
+   */
   toString() {
     let currentNode = this.head;
     let res = '';

@@ -7,6 +7,11 @@ class Queue {
     this.size = 0;
   }
 
+  /**
+   * Adds a value to the end of the queue
+   * @param {any} val The value to add
+   * @returns {Number} The size of the queue
+   */
   enqueue(val) {
     const node = new Node(val);
     if (!this.size) {
@@ -20,6 +25,10 @@ class Queue {
     return this.size;
   }
 
+  /**
+   * Removes an element from the beginning of the queue
+   * @returns {any} The removed element (or undefined if the queue is empty)
+   */
   dequeue() {
     if (!this.size) return undefined;
     const current = this.first;
