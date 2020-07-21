@@ -1,9 +1,9 @@
 const expect = require('expect');
-const Heap = require('../data_structures/heap');
+const BinaryHeap = require('../data_structures/binary_heap');
 
-describe('Heap', () => {
+describe('Binary heap', () => {
   it('Inserts an element into the correct spot', () => {
-    const heap = new Heap();
+    const heap = new BinaryHeap();
     heap.insert(30);
     heap.insert(20);
     heap.insert(10);
@@ -13,7 +13,7 @@ describe('Heap', () => {
     expect(heap.values).toEqual([100, 30, 10, 20, 25]);
   });
   it('Removes the root and rearranges the heap correctly', () => {
-    const heap = new Heap();
+    const heap = new BinaryHeap();
     heap.insert(41);
     heap.insert(39);
     heap.insert(33);
@@ -25,7 +25,7 @@ describe('Heap', () => {
     expect(heap.values).toEqual([39, 27, 33, 18, 12]);
   });
   it('Performs remove correctly for a heap with a single value', () => {
-    const heap = new Heap();
+    const heap = new BinaryHeap();
     heap.insert(41);
     const maxElement = heap.extractMax();
     expect(maxElement).toEqual(41);

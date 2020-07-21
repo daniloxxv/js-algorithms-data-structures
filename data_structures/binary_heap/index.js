@@ -5,7 +5,7 @@ const swap = require('../../helpers/swap');
  * of two mathematical properties: for any node, the parent's index will be Math.floor((index-1)/2),
  * while the index of the left and right children will be 2*index + 1 and 2*index + 2, respectively
  */
-class Heap {
+class BinaryHeap {
   constructor() {
     this.values = [];
   }
@@ -47,7 +47,7 @@ class Heap {
     let index = this.values.length - 1;
     // Compares the element to its parent and swaps until it's in the right place
     while (index > 0) {
-      const parentIndex = Heap.getParent(index);
+      const parentIndex = BinaryHeap.getParent(index);
       if (this.values[index] < this.values[parentIndex]) break;
       swap(this.values, index, parentIndex);
       index = parentIndex;
@@ -73,11 +73,11 @@ class Heap {
         ? leftChildIndex : rightChildIndex;
       swap(this.values, index, greatestChildIndex);
       index = greatestChildIndex;
-      leftChildIndex = Heap.getLeftChild(index);
-      rightChildIndex = Heap.getRightChild(index);
+      leftChildIndex = BinaryHeap.getLeftChild(index);
+      rightChildIndex = BinaryHeap.getRightChild(index);
     }
     return this.values.pop();
   }
 }
 
-module.exports = Heap;
+module.exports = BinaryHeap;
