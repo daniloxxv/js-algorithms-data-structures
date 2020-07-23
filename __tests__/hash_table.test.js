@@ -20,4 +20,18 @@ describe('Hash table', () => {
     const ht = new HashTable();
     expect(ht.get('something')).toBeUndefined();
   });
+  it('Should return an array with all keys', () => {
+    const ht = new HashTable();
+    ht.set('foo', 1);
+    ht.set('bar', 2);
+    ht.set('baz', 3);
+    expect(ht.keys()).toEqual(['foo', 'bar', 'baz']);
+  });
+  it('Should return an array with all values', () => {
+    const ht = new HashTable();
+    ht.set('foo', 1);
+    ht.set('bar', 2);
+    ht.set('baz', 3);
+    expect(ht.values()).toEqual([1, 2, 3]);
+  });
 });

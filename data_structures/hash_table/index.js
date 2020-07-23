@@ -44,6 +44,32 @@ class HashTable {
     }
     return undefined;
   }
+
+  /**
+   * @returns {Array} An array with all keys in the hash table
+   */
+  keys() {
+    const keys = [];
+    this.keyMap.forEach((allocation) => {
+      allocation.forEach((entry) => {
+        keys.push(entry[0]);
+      });
+    });
+    return keys;
+  }
+
+  /**
+   * @returns {Array} An array with all values in the hash table
+   */
+  values() {
+    const values = [];
+    this.keyMap.forEach((allocation) => {
+      allocation.forEach((entry) => {
+        values.push(entry[1]);
+      });
+    });
+    return values;
+  }
 }
 
 module.exports = HashTable;
