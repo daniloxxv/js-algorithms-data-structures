@@ -1,4 +1,5 @@
 const expect = require('expect');
+const getRandomCharSequence = require('./helpers/getRandomCharSequence');
 const PriorityQueue = require('../data_structures/priority_queue');
 
 describe('Priority queue', () => {
@@ -14,5 +15,18 @@ describe('Priority queue', () => {
     expect(queue.dequeue()).toEqual('Something important, but not urgent');
     expect(queue.dequeue()).toEqual('Something slightly more important');
     expect(queue.dequeue()).toEqual('Something unimportant');
+  });
+  it('Should handle a large amount of data', () => {
+    const queue = new PriorityQueue();
+    const arr = [];
+    for (let i = 0; i < 1000; i += 1) {
+      const entry = getRandomCharSequence();
+      const priority = i;
+      arr.push({ entry, priority });
+      queue.enqueue(entry, priority);
+    }
+    for (let i = 0; i < 1000; i += 1) {
+      expect(queue.dequeue()).toEqual(arr.shift().entry);
+    }
   });
 });
