@@ -28,6 +28,12 @@ class HashTable {
     if (!this.keyMap[index]) {
       this.keyMap[index] = [];
     }
+    for (let i = 0; i < this.keyMap[index].length; i += 1) {
+      if (this.keyMap[index][i][0] === key) {
+        this.keyMap[index][i][1] = value;
+        return;
+      }
+    }
     this.keyMap[index].push([key, value]);
   }
 
@@ -43,6 +49,19 @@ class HashTable {
       if (this.keyMap[index][i][0] === key) return this.keyMap[index][i][1];
     }
     return undefined;
+  }
+
+  /**
+   * Removes the key/value pair from the hash table
+   * @param {String} key The key of the item to remove
+   */
+  delete(key) {
+    const index = this.hash(key);
+    if (!this.keyMap[index]) return;
+    for (let i = 0; i < this.keyMap[index].length; i += 1) {
+      if (this.keyMap[index][i][0] === key) this.keyMap[index].splice(i, 1);
+    }
+    if (this.keyMap[index].length === 0) delete this.keyMap[index];
   }
 
   /**
