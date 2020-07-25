@@ -1,3 +1,5 @@
+const Stack = require('../stack');
+
 class Graph {
   constructor() {
     this.adjacencyList = {};
@@ -48,9 +50,9 @@ class Graph {
 
   /**
    * Traverses the graph with recursive DFS starting from a vertex
-   * @param {String} name The name of the starting vertex
+   * @param {String} start The name of the starting vertex
    */
-  recursiveDFS(name) {
+  recursiveDFS(start) {
     const visited = new Set();
     const result = [];
     const DFS = (vertex) => {
@@ -60,7 +62,28 @@ class Graph {
         if (!visited.has(neighbor)) DFS(neighbor);
       });
     };
-    DFS(name);
+    DFS(start);
+    return result;
+  }
+
+  /**
+   * Traverses the graph with recursive DFS starting from a vertex
+   * @param {String} start The name of the starting vertex
+   */
+  iterativeDFS(start) {
+    const visited = new Set();
+    const result = [];
+    const stack = new Stack();
+    stack.push(start);
+    let currentVertex;
+    while (stack.size) {
+      currentVertex = stack.pop();
+      if (!visited.has(currentVertex)) {
+        visited.add(currentVertex);
+        result.push(currentVertex);
+        this.adjacencyList[currentVertex].forEach((neighbor) => stack.push(neighbor));
+      }
+    }
     return result;
   }
 }

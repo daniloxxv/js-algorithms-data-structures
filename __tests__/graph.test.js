@@ -68,10 +68,16 @@ describe('Graph', () => {
     expect(graph.adjacencyList.London).toContain('Paris');
     expect(graph.adjacencyList.Rome).toBeUndefined();
   });
-  it('Should perform depth-first search correctly', () => {
+  it('Should perform recursive depth-first search correctly', () => {
     const graph = new Graph();
     ['A', 'B', 'C', 'D', 'E', 'F'].forEach((vertex) => graph.addVertex(vertex));
     [['A', 'B'], ['A', 'C'], ['B', 'D'], ['C', 'E'], ['D', 'E'], ['D', 'F'], ['E', 'F']].forEach((edge) => graph.addEdge(...edge));
     expect(graph.recursiveDFS('A')).toEqual(['A', 'B', 'D', 'E', 'C', 'F']);
+  });
+  it('Should perform iterative DFS correctly', () => {
+    const graph = new Graph();
+    ['A', 'B', 'C', 'D', 'E', 'F'].forEach((vertex) => graph.addVertex(vertex));
+    [['A', 'B'], ['A', 'C'], ['B', 'D'], ['C', 'E'], ['D', 'E'], ['D', 'F'], ['E', 'F']].forEach((edge) => graph.addEdge(...edge));
+    expect(graph.iterativeDFS('A')).toEqual(['A', 'C', 'E', 'F', 'D', 'B']);
   });
 });
