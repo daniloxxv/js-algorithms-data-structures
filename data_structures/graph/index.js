@@ -45,6 +45,24 @@ class Graph {
     });
     delete this.adjacencyList[name];
   }
+
+  /**
+   * Traverses the graph with recursive DFS starting from a vertex
+   * @param {String} name The name of the starting vertex
+   */
+  recursiveDFS(name) {
+    const visited = new Set();
+    const result = [];
+    const DFS = (vertex) => {
+      visited.add(vertex);
+      result.push(vertex);
+      this.adjacencyList[vertex].forEach((neighbor) => {
+        if (!visited.has(neighbor)) DFS(neighbor);
+      });
+    };
+    DFS(name);
+    return result;
+  }
 }
 
 module.exports = Graph;
