@@ -9,6 +9,7 @@ const Node = require('./node');
 class PriorityQueue {
   constructor() {
     this.values = [];
+    this.length = 0;
   }
 
   /**
@@ -45,6 +46,7 @@ class PriorityQueue {
    */
   enqueue(value, priority) {
     const node = new Node(value, priority);
+    this.length += 1;
     // Adds an element to the end of the heap
     this.values.push(node);
     let index = this.values.length - 1;
@@ -84,6 +86,7 @@ class PriorityQueue {
       leftIndex = PriorityQueue.getLeftChild(index);
       rightIndex = PriorityQueue.getRightChild(index);
     }
+    this.length -= 1;
     return priorityNode.val;
   }
 }
