@@ -80,4 +80,10 @@ describe('Graph', () => {
     [['A', 'B'], ['A', 'C'], ['B', 'D'], ['C', 'E'], ['D', 'E'], ['D', 'F'], ['E', 'F']].forEach((edge) => graph.addEdge(...edge));
     expect(graph.iterativeDFS('A')).toEqual(['A', 'C', 'E', 'F', 'D', 'B']);
   });
+  it('Should perform BFS correctly', () => {
+    const graph = new Graph();
+    ['A', 'B', 'C', 'D', 'E', 'F'].forEach((vertex) => graph.addVertex(vertex));
+    [['A', 'B'], ['A', 'C'], ['B', 'D'], ['C', 'E'], ['D', 'E'], ['D', 'F'], ['E', 'F']].forEach((edge) => graph.addEdge(...edge));
+    expect(graph.BFS('A')).toEqual(['A', 'B', 'C', 'D', 'E', 'F']);
+  });
 });

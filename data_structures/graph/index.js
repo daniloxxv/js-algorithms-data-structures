@@ -1,4 +1,5 @@
 const Stack = require('../stack');
+const Queue = require('../queue');
 
 class Graph {
   constructor() {
@@ -82,6 +83,26 @@ class Graph {
         visited.add(currentVertex);
         result.push(currentVertex);
         this.adjacencyList[currentVertex].forEach((neighbor) => stack.push(neighbor));
+      }
+    }
+    return result;
+  }
+
+  /** Traverses the graph with recursive DFS starting from a vertex
+  * @param {String} start The name of the starting vertex
+  */
+  BFS(start) {
+    const visited = new Set();
+    const result = [];
+    const queue = new Queue();
+    queue.enqueue(start);
+    let currentVertex;
+    while (queue.size) {
+      currentVertex = queue.dequeue();
+      if (!visited.has(currentVertex)) {
+        visited.add(currentVertex);
+        result.push(currentVertex);
+        this.adjacencyList[currentVertex].forEach((neighbor) => queue.enqueue(neighbor));
       }
     }
     return result;
