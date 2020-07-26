@@ -10,7 +10,6 @@ class WeightedGraph {
    * @param {String} name The name of the vertex
    */
   addVertex(name) {
-    if (this.adjacencyList[name]) return;
     this.adjacencyList[name] = new Set();
   }
 
@@ -50,26 +49,31 @@ class WeightedGraph {
     // Adding the origin to the priority queue
     queue.enqueue(vertex1, 0);
 
-    while (queue.length && !visited.has(vertex2)) {
+    while (queue.length) {
       // Retrieving the edge with the lowest weight
       const currentVertex = queue.dequeue();
+
+      // If the current node is the destination, there is no need to visit the rest of the nodes
+      if (currentVertex === vertex2) break;
+
       if (!visited.has(currentVertex)) {
         visited.add(currentVertex);
-        this.adjacencyList[currentVertex].forEach((edge) => {
-          // Calculating the distance from start to the edge vertex following the current path
-          const newDistance = distanceFromStart[currentVertex] + edge.weight;
-          if (newDistance < distanceFromStart[edge.node]) {
+        this.adjacencyList[currentVertex].forEach((next) => {
+          // Calculating the distance from start to the next node following the current path
+          const candidate = distanceFromStart[currentVertex] + next.weight;
+          if (candidate < distanceFromStart[next.node]) {
             // If the distance is less than the previously registered value, update it
-            distanceFromStart[edge.node] = newDistance;
+            distanceFromStart[next.node] = candidate;
             // Update the value of 'previous' to reflect the new path
-            previous[edge.node] = currentVertex;
+            previous[next.node] = currentVertex;
           }
-          queue.enqueue(edge.node, distanceFromStart[edge.node]);
+          // Adding the next node to the queue
+          queue.enqueue(next.node, distanceFromStart[next.node]);
         });
       }
     }
 
-    // Reconstructing the path
+    // Building the path
     const path = [];
     let current = vertex2;
     while (current !== null) {
